@@ -1,0 +1,13 @@
+﻿@model IEnumerable<KingdomGarden.MVC.Models.PostViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+}
+
+@ViewBag.Login
+
+@Html.Partial("../Post/Index")
+
+
+

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var count = (int)ViewData["count"];
+}
+<br/>
+<div class="panel-group">
+    <div class="panel panel-default col-sm-6">
+        <div class="panel-heading">Register</div>
+        <div class="panel-body">@Html.Partial("Register")</div>
+    </div>
+    <div class="panel panel-default col-sm-6">
+        <div class="panel-heading">Login</div>
+        <div class="panel-body">@Html.Partial("Login")</div>
+    </div>
+</div>
+
+<footer>
+    @count listed gardens in Kingdom Garden;
+</footer>

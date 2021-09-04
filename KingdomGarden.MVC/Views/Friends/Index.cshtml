@@ -1,0 +1,33 @@
+﻿@model IEnumerable<KingdomGarden.MVC.Models.FriendViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+}
+
+<h2>Friends</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId2)
+        </td>
+        <td>
+            @Html.ActionLink("Delete friendship", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+</table>
+
+<h2>Other Users</h2>
+<hr/>
+
+@Html.ActionLink("Other Users", "OtherUsers", "Friends")

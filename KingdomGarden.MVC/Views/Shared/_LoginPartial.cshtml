@@ -1,0 +1,8 @@
+﻿@{ var userId = (string)Session["userId"]; }
+
+@using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ActionLink("Hello " + userId + "!", "Index", "Profile")
+        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+    }

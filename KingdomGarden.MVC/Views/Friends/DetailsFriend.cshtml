@@ -1,0 +1,66 @@
+﻿@model KingdomGarden.MVC.Models.ProfileViewModel
+
+<div class="modal fade" id="DetailsFriend" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">DetailsFriend</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FirstName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.LastName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ImageUrl)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ImageUrl)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BirthDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.BirthDate)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

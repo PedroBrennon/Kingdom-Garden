@@ -1,0 +1,40 @@
+﻿@model KingdomGarden.MVC.Models.LikeViewModel
+
+@{
+    ViewBag.Title = "DeleteLike";
+    Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+}
+
+<h2>Like</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.Id)
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete Like" class="btn btn-default" /> |
+            @Html.ActionLink("Back", "Index")
+        </div>
+    }
+</div>

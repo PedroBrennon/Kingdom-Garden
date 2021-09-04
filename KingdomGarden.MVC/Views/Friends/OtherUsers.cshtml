@@ -1,0 +1,41 @@
+﻿@model IEnumerable<KingdomGarden.MVC.Models.ProfileViewModel>
+
+@{
+    ViewBag.Title = "Other users";
+    Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Add Friend", "Create", new { id = "/"+item.Email+"/" }) |
+                @Html.ActionLink("See Friend", "DetailsFriend", "Friends", new { id = "/" + item.Email + "/" }, new { htmlAttributes = new { @class = "modal", @data_target = "modal" } })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    $(function () {
+        $('.modal').on("click", function (e) {
+            e.preventDefault();
+            $('#DetailsFriend').modal({
+                keyboard: true
+            }, 'show');
+            return false;
+        })
+    })
+</script>

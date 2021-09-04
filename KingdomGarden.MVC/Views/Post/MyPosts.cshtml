@@ -1,0 +1,72 @@
+﻿@model IEnumerable<KingdomGarden.MVC.Models.PostViewModel>
+@{
+    ViewBag.Title = "My posts";
+    Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+    var userId = (string)Session["userId"];
+}
+
+<p>
+    @Html.ActionLink("Create post", "Create", "Post")
+</p>
+
+<div class="panel-group">
+    @if (Model == null)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>There are no posts.</p>
+            </div>
+        </div>
+    }
+    @foreach (var item in Model ?? Enumerable.Empty<KingdomGarden.MVC.Models.PostViewModel>())
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p>@Html.DisplayFor(modelItem => item.Text)</p>
+                <p><img width="140" height="140" class="img-thumbnail" src="@Html.DisplayFor(modelItem => item.ImageUrl)" /></p>
+                <p align="right">@Html.DisplayFor(modelItem => item.UserId)</p>
+            </div>
+            <div class="panel-body">
+                @Html.DisplayFor(modelItem => item.Likes) likes<br />
+                @if (item.UserId != userId)
+                {
+                    if (item.Likes == 0)
+                    {
+                        @Html.ActionLink("Like", "InsertLike", "Post", new { postId = item.Id }, null)<br />
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Like", "InsertLike", "Post", new { postId = item.Id }, null)
+                        @Html.ActionLink("Dislike", "DeleteLike", "Post", new { id = item.Id }, null)<br />
+                    }
+                }
+
+                @foreach (var i in item.Comments)
+                {
+                    if (i.UserId == userId)
+                    {
+                        <img width="140" height="140" class="img-thumbnail" src="@Html.DisplayFor(modelItem => i.ImageUrl)" /><br />
+                        @Html.DisplayFor(modelItem => i.Text)<br />
+                        @Html.ActionLink("Edit comment", "Edit", "Comment", new { postId = i.PostId }, null) <br />
+                        @Html.ActionLink("Delete comment", "Delete", "Comment", new { id = i.Id }, null) <br />
+                    }
+                    else
+                    {
+                        <img width="140" height="140" class="img-thumbnail" src="@Html.DisplayFor(modelItem => i.ImageUrl)" /><br />
+                        @Html.DisplayFor(modelItem => i.Text)<br />
+                        @Html.DisplayFor(modelItem => i.UserId)<br />
+                    }
+                }
+                @Html.ActionLink("Add comment", "Create", "Comment", new { postId = item.Id }, null)
+            </div>
+            <div class="panel-footer">
+                <p>
+                    @Html.DisplayFor(modelItem => item.CreateDate) |
+                    @Html.ActionLink("Edit post", "Edit", "Post", new { id = item.Id }, null) |
+                    @Html.ActionLink("Delete post", "Delete", "Post", new { id = item.Id }, null)
+                </p>
+            </div>
+        </div>
+    }
+</div>
+

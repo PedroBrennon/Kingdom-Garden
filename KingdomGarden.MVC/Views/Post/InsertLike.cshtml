@@ -1,0 +1,29 @@
+﻿@model KingdomGarden.MVC.Models.LikeViewModel
+
+@{
+    ViewBag.Title = "InsertLike";
+    Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+}
+
+<h2>Like</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UserId)
+    @Html.HiddenFor(model => model.PostId)
+
+    <div class="form-group">
+        <div class="col-md-offset-2">
+            <input type="submit" value="Insert Like" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
